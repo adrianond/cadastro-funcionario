@@ -120,15 +120,13 @@
 	 <bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/> 
 	 <bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/> 
 	 
-	 <!-- Controller -->
-	 <bean id="controller" class="br.com.framework.controller.crud.Controller"/>
-	 
 	 
 	 <!-- Services -->
 	 <bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl"/>
 	 <bean id="srvCidade" class="br.com.srv.implementacao.SrvCidadeImpl"/>
 	 <bean id="srvBairro" class="br.com.srv.implementacao.SrvBairroImpl"/>
 	 <bean id="srvFilial" class="br.com.srv.implementacao.SrvFilialImpl"/>
+	 <bean id="srvTitulo" class="br.com.srv.implementacao.SrvTituloImpl"/>
 	 
 	 
 	 <!-- DAOS -->
@@ -136,15 +134,18 @@
 	 <bean id="repositoryCidade" class="br.com.dao.implementacao.DaoCidade"/>
 	 <bean id="repositoryBairro" class="br.com.dao.implementacao.DaoBairro"/>
 	 <bean id="repositoryFilial" class="br.com.dao.implementacao.DaoFilial"/>
+	  <bean id="repositoryTitulo" class="br.com.dao.implementacao.DaoTitulo"/>
 	 
 	 
 	 
 	 <!-- Controllers -->
+	 <bean id="controller" class="br.com.framework.controller.crud.Controller"/>
 	 <bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton" />
 	 <bean id="cidadeController"  class="br.com.project.geral.controller.CidadeController" />
 	 <bean id="bairroController"  class="br.com.project.geral.controller.BairroController" />
 	 <bean id="filialController"  class="br.com.project.geral.controller.FilialController" />
 	 <bean id="mensagemController"  class="br.com.project.geral.controller.MensagemController" />
+	 <bean id="tituloController"  class="br.com.project.geral.controller.TituloController" />
 	 
 
 </beans>

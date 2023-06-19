@@ -161,6 +161,11 @@
 										onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_funcionario')"
 										ajax="true" />
 								</sec:ifAnyGranted>
+								<sec:ifAnyGranted roles="FINANCEIRO_ACESSAR, ADMIN">
+									<p:menuitem value="Titulo" id="menutitulo"
+										action="#{tituloBeanView.redirecionarFindEntidade}"
+										immediate="true"/>
+								</sec:ifAnyGranted>
 							</p:submenu>
 						</sec:ifAnyGranted>
 

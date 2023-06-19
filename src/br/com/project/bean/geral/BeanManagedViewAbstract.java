@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.enums.CondicaoPesquisa;
+import br.com.project.enums.TituloSituacao;
 import br.com.project.report.util.BeanReportView;
 import br.com.project.util.all.Messagens;
 import br.com.project.util.all.UtilitariaRegex;
@@ -20,6 +21,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.component.html.HtmlInputHidden;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.persistence.Column;
@@ -39,6 +41,18 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public List<SelectItem> listaCondicaoPesquisa;
 
 	public String valorPesquisa;
+	
+	private HtmlInputHidden htmlInputHidden;
+
+	public HtmlInputHidden getHtmlInputHidden() {
+		return htmlInputHidden;
+	}
+
+	public void setHtmlInputHidden(HtmlInputHidden htmlInputHidden) {
+		this.htmlInputHidden = htmlInputHidden;
+	}
+
+	private HtmlInputHidden htmlInputHiddenTitulo;
 
 	protected abstract Class<?> getClassImplement();
 
@@ -270,5 +284,40 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	public Object onRowUnselect(UnselectEvent event) {
 		return  event.getObject();
+	}
+	
+	public TituloSituacao getTituloSituacaoTemp() {
+
+		if (htmlInputHiddenTitulo == null
+				|| (htmlInputHiddenTitulo != null && htmlInputHiddenTitulo
+						.getAttributes() == null)) {
+			return null;
+		}
+
+		String tipoEntidade = (String) htmlInputHiddenTitulo.getAttributes()
+				.get("tipoTituloEmAberto");
+
+		if (tipoEntidade == null) {
+			return null;
+		}
+
+		if (tipoEntidade.equals(TituloSituacao.TITULO_ABERTO.name())) {
+			return TituloSituacao.TITULO_ABERTO;
+		} else if (tipoEntidade.equals(TituloSituacao.TITULO_BAIXADO.name())) {
+			return TituloSituacao.TITULO_BAIXADO;
+		} else {
+			return null;
+		}
+	}
+	
+	protected boolean consultarInativosBoolean() {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String consultarInativos = params.get("consultarInativos");
+
+		if (consultarInativos == null) {
+			return false;
+		}
+
+		return Boolean.valueOf(consultarInativos);
 	}
 }

@@ -36,24 +36,24 @@ public class Titulo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Codigo", campoConsulta = "tit_codigo")
+	@IdentificaCampoPesquisa(descricaoCampo = "Codigo", campoConsulta = "tituloCodigo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "titulo_seq")
 	private Long tituloCodigo;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Documento", campoConsulta = "tit_documento")
+	@IdentificaCampoPesquisa(descricaoCampo = "Documento", campoConsulta = "tituloDocumento")
 	@Column(length = 18)
 	private String tituloDocumento;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Tipo", campoConsulta = "tit_tipo")
+	@IdentificaCampoPesquisa(descricaoCampo = "Tipo", campoConsulta = "tituloTipo")
 	@Enumerated(EnumType.STRING)
 	private TipoTitulo tituloTipo;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Origem", campoConsulta = "tit_origem")
+	@IdentificaCampoPesquisa(descricaoCampo = "Origem", campoConsulta = "tituloOrigem")
 	@Enumerated(EnumType.STRING)
 	private TituloOrigem tituloOrigem;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Vencimento", campoConsulta = "tit_datavencimento")
+	@IdentificaCampoPesquisa(descricaoCampo = "Vencimento", campoConsulta = "tituloDatavencimento")
 	@Temporal(TemporalType.DATE)
 	private Date tituloDatavencimento;
 
@@ -61,48 +61,48 @@ public class Titulo implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date tituloDatahora = new Date();
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Data da baixa", campoConsulta = "tit_databaixa")
+	@IdentificaCampoPesquisa(descricaoCampo = "Data da baixa", campoConsulta = "tituloDataBaixa")
 	@Temporal(TemporalType.DATE)
-	private Date tituloDatabaixa;
+	private Date tituloDataBaixa;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Usuario abertura", campoConsulta = "ent_codigoabertura.ent_nomefantasia", principal = 1)
+	@IdentificaCampoPesquisa(descricaoCampo = "Usuario abertura", campoConsulta = "entCodigoAbertura.ent_nomefantasia", principal = 1)
 	@Basic
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "ent_codigoabertura", updatable = false)
 	@ForeignKey(name = "ent_codigoabertura_fk")
 	private Entidade entCodigoAbertura = new Entidade(); 
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Usuario baixa", campoConsulta = "ent_codigobaixa.ent_nomefantasia")
+	@IdentificaCampoPesquisa(descricaoCampo = "Usuario baixa", campoConsulta = "entCodigoBaixa.ent_nomefantasia")
 	@Basic
 	@ManyToOne
 	@JoinColumn(nullable = true, name = "ent_codigobaixa", updatable = true)
 	@ForeignKey(name = "ent_codigobaixa_fk")
 	private Entidade entCodigoBaixa = new Entidade();
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Entidade responsavel", campoConsulta = "ent_codigo.ent_nomefantasia")
+	@IdentificaCampoPesquisa(descricaoCampo = "Entidade responsavel", campoConsulta = "entCodigo.ent_nomefantasia")
 	@Basic
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "ent_codigo")
 	@ForeignKey(name = "ent_codigo_fk")
 	private Entidade entCodigo = new Entidade();
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Valor R$", campoConsulta = "tit_valor")
+	@IdentificaCampoPesquisa(descricaoCampo = "Valor R$", campoConsulta = "tituloValor")
 	@Column(scale = 4, precision = 15)
 	private BigDecimal tituloValor = null;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Desconto em baixa", campoConsulta = "tit_descontobaixa")
+	@IdentificaCampoPesquisa(descricaoCampo = "Desconto em baixa", campoConsulta = "tituloDescontoBaixa")
 	@Column(scale = 4, precision = 15)
 	private BigDecimal tituloDescontoBaixa = null;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Acr�scimo em baixa", campoConsulta = "tit_acrescimobaixa") 
+	@IdentificaCampoPesquisa(descricaoCampo = "Acrescimo em baixa", campoConsulta = "tituloAcrescimoBaixa") 
 	@Column(scale = 4, precision = 15)
 	private BigDecimal tituloAcrescimoBaixa = null;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Valor baixa", campoConsulta = "tit_valorbaixa")
+	@IdentificaCampoPesquisa(descricaoCampo = "Valor baixa", campoConsulta = "tituloValorBaixa")
 	@Column(scale = 4, precision = 15)
 	private BigDecimal tituloValorBaixa = null; 
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Observa��o", campoConsulta = "tit_observacao")
+	@IdentificaCampoPesquisa(descricaoCampo = "Observacao", campoConsulta = "tituloObservacao")
 	@Column(columnDefinition = "text", length = 500)
 	private String tituloObservacao;
 	
@@ -139,12 +139,12 @@ public class Titulo implements Serializable {
 		return selecionarParaBaixa;
 	}
 
-	public Long getTitCodigo() {
+	public Long getTituloCodigo() {
 		return tituloCodigo;
 	}
 
-	public void setTitCodigo(Long tit_codigo) {
-		this.tituloCodigo = tit_codigo;
+	public void setTituloCodigo(Long tituloCodigo) {
+		this.tituloCodigo = tituloCodigo;
 	}
 
 	public Date getTituloDatahora() {
@@ -235,12 +235,12 @@ public class Titulo implements Serializable {
 		this.tituloValorBaixa = tit_valorbaixa;
 	}
 
-	public Date getTituloDatabaixa() {
-		return tituloDatabaixa;
+	public Date getTituloDataBaixa() {
+		return tituloDataBaixa;
 	}
 
-	public void setTituloDatabaixa(Date tit_databaixa) {
-		this.tituloDatabaixa = tit_databaixa;
+	public void setTituloDataBaixa(Date tituloDataBaixa) {
+		this.tituloDataBaixa = tituloDataBaixa;
 	}
 
 	public String getTituloObservacao() {
@@ -255,8 +255,8 @@ public class Titulo implements Serializable {
 		return entCodigoBaixa;
 	}
 
-	public void setEntCodigoBaixa(Entidade ent_codigobaixa) {
-		this.entCodigoBaixa = ent_codigobaixa;
+	public void setEntCodigoBaixa(Entidade entCodigoBaixa) {
+		this.entCodigoBaixa = entCodigoBaixa;
 	}
 
 	@Override

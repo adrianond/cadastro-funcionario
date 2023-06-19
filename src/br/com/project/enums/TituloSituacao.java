@@ -1,12 +1,13 @@
 package br.com.project.enums;
 
-public enum TituloOrigem {
+public enum TituloSituacao {
 
-	COMISSAO("Comissao"), ORIGEM("Origem");
+	TITULO_ABERTO("Aberto"),
+	TITULO_BAIXADO("Baixado");
 
 	private String tipo = "";
 
-	private TituloOrigem(String tipo) {
+	private TituloSituacao(String tipo) {
 		this.tipo = tipo;
 	}
 

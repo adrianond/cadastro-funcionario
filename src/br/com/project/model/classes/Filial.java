@@ -34,13 +34,13 @@ public class Filial implements Serializable {
 
 	private static final long serialVersionUID = 758145504502063775L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "C�digo", campoConsulta = "fil_codigo")
+	@IdentificaCampoPesquisa(descricaoCampo = "Codigo", campoConsulta = "fil_codigo")
 	@Id
 	@Column(name = "fil_codigo")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "filial_seq")
 	private Long fil_codigo;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Descri��o", campoConsulta = "fil_descricao", principal = 1)
+	@IdentificaCampoPesquisa(descricaoCampo = "Descricao", campoConsulta = "fil_descricao", principal = 1)
 	@Column(length = 100, nullable = false)
 	private String fil_descricao;
 
