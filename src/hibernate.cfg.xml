@@ -31,6 +31,7 @@
         <mapping class="br.com.project.model.classes.Mensagem"/>
         <mapping class="br.com.project.model.classes.Bairro"/>
         <mapping class="br.com.project.model.classes.Filial"/>
+         <mapping class="br.com.project.model.classes.Titulo"/>
         
         
         <listener class="org.hibernate.envers.event.AuditEventListener"
