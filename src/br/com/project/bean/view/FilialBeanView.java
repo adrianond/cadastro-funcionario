@@ -185,8 +185,7 @@ public class FilialBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void excluir() throws Exception {
-			if (objetoSelecionado.getFil_codigo() != null
-					&& objetoSelecionado.getFil_codigo() > 0) {
+			if (objetoSelecionado.getFil_codigo() != null && objetoSelecionado.getFil_codigo() > 0) {
 				filialController.delete(objetoSelecionado);
 				list.remove(objetoSelecionado);
 				objetoSelecionado = new Filial();

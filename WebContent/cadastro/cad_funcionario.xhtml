@@ -629,7 +629,7 @@
 						var filialObj = JSON.parse(objeto);
 						$("#fil_codigo").val(filialObj.fil_codigo);
 						$("#fil_descricao").val(validaDescricao(filialObj.fil_descricao));
-						addFilialFunc(filialObj.fil_codigo);
+						(filialObj.fil_codigo);
 					}
 		
 					function validaDescricao(descricao) {
@@ -729,7 +729,7 @@
 			header="Consulta de filial" appendToBody="false" dynamic="true">
 			<util:pesquisa managedBeanView="#{filialBeanView}"
 				nomePesquisa="Pesquisa de filial"
-				
+				colunasGridDataTableList="/resources/components/colunasDataTableFilial.xhtml"
 				exibirBotaoAdd="true" ocultaNovo="true"
 				funcaoJavaScript="filialDialog.hide(),addFilialSelecionadoFunc('#{objeto.json}')">
 			</util:pesquisa>
@@ -741,7 +741,7 @@
 			header="Consulta de bairro" appendToBody="false" dynamic="true">
 			<util:pesquisa managedBeanView="#{bairroBeanView}"
 				nomePesquisa="Pesquisa de Bairro"
-				
+				colunasGridDataTableList="/resources/components/colunasDataTableBairro.xhtml"
 				exibirBotaoAdd="true" ocultaNovo="true"
 				funcaoJavaScript="bairroDialog.hide(),addBairroSelecionadoFunc('#{objeto.json}')">
 			</util:pesquisa>

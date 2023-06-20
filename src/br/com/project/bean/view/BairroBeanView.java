@@ -79,8 +79,7 @@ public class BairroBeanView extends BeanManagedViewAbstract {
 	 */
 	@Override
 	public void excluir() throws Exception {
-			if (objetoSelecionado.getBai_codigo() != null
-					&& objetoSelecionado.getBai_codigo() > 0) {
+			if (objetoSelecionado.getBai_codigo() != null && objetoSelecionado.getBai_codigo() > 0) {
 				bairroController.delete(objetoSelecionado);
 				list.getList().remove(objetoSelecionado);
 				objetoSelecionado = new Bairro();
@@ -88,10 +87,8 @@ public class BairroBeanView extends BeanManagedViewAbstract {
 			}
 	}
 
-	/**
-	 * Ivocado pelo bot�o consultar
-	 */
-	public void consultaEntidade() throws Exception {
+	
+	public void consultarEntidade() throws Exception {
 			objetoSelecionado = new Bairro();
 			list.clear();
 			list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());

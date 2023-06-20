@@ -455,6 +455,13 @@
 					}
 				}
 				
+				function addResponsavelSelecionadoTitulo(objeto) {
+					var entObj = JSON.parse(objeto);
+					$("#responsavelCodigo").val(entObj.ent_codigo);
+					$("#responsavelNome").val(validaDescricao(entObj.ent_nomefantasia));
+					addResponsavelTitulo(entObj.ent_codigo);
+				}
+				
 				function addResponsavelTitulo(id) {
 					if (id != '') {
 						 $.get("addResponsavelTitulo?codResponsavel=" + id, function(resposta) {

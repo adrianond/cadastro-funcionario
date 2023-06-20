@@ -79,7 +79,7 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 			throws Exception {
 
 		if (codResponsavel != null && codResponsavel > 0) {
-				//objetoSelecionado.setEntCodigo(entidadeController.findByPorId(Entidade.class, codResponsavel));
+			objetoSelecionado.setEntCodigo(entidadeController.findByPorId(Entidade.class, codResponsavel));
 		}
 	}
 

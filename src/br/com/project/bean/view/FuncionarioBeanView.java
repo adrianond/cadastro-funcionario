@@ -202,7 +202,7 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String condicaoAndParaPesquisa() {
-		return "and entity.ent_tipo = '" + TipoCadastro.TIPO_CADASTRO_FUNCIONARIO.getTipo()+ "' " + consultarInativos();
+		return "and entity.ent_tipo = '" + TipoCadastro.TIPO_CADASTRO_FUNCIONARIO.name()+ "' " + consultarInativos();
 	}
 	
 	/*
