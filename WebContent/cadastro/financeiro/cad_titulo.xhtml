@@ -406,25 +406,68 @@
 
 			<div class="espacoBranco" />
 
-			<util:botoesCrud managedBeanView="#{tituloBeanView}"
+			<util:botoesCrud 
+			    managedBeanView="#{tituloBeanView}"
 				camposReload=":formTemplate:msg, tableResult" />
+				
+				
+				<script type="text/javascript" charset="UTF-8">
+				addFocoAoCampo('tit_documento');
+				
+				function addMascaraDecimalMonetaria(id) { 
+					var id = getValorElementPorId(id);
+					if (id != idundefined) {
+						jQuery(function($){
+							$("#"+id).maskMoney({precision:2, decimal:",", thousands:"."}); 
+						});	
+					}
+				}
+				
+				var id = getValorElementPorIdJQuery('tit_descontobaixa');
+				$(id).keypress(naoPermiteEntradaDeDados);
+				
+				id = getValorElementPorIdJQuery('tit_acrescimobaixa');
+				$(id).keypress(naoPermiteEntradaDeDados);
+				
+				id = getValorElementPorIdJQuery('tit_valorbaixa');
+				$(id).keypress(naoPermiteEntradaDeDados);
+				
+				permitirApenasNumero('responsavelCodigo');
+				
+				function naoPermiteEntradaDeDados(e) {
+					return false;
+				}
+				
+				function pesquisarResponsavelPerderFoco(id) {
+					if (id != '') {
+					 statusDialog.show();
+					 $("#responsavelNome").val('');
+					 $.get("findResponsavel?codResponsavel=" + id, function(resposta) {
+					        if (resposta.trim() != ''){
+					        	var respObj = JSON.parse(resposta);
+					        	$("#responsavelCodigo").val(respObj.ent_codigo);
+					        	$("#responsavelNome").val(validaDescricao(respObj.ent_nomefantasia));
+					        }
+					   })
+					   .always(function() { 
+						   statusDialog.hide();
+						});
+					}
+				}
+				
+				function addResponsavelTitulo(id) {
+					if (id != '') {
+						 $.get("addResponsavelTitulo?codResponsavel=" + id, function(resposta) {
+							console.log(resposta) 
+						 }).error(function() {
+							 console.log('erro', resposta) 
+						 });
+					}
+				}
+			</script>	
 		</h:form>
 
-		<script type="text/javascript" charset="UTF-8">
-			addFocoAoCampo('tit_documento');
-			addMascaraDecimalMonetaria('tit_valor');
-			
-			var id = getValorElementPorIdJQuery('tit_descontobaixa');
-			$(id).keypress(naoPermiteEntradaDeDados);
-			
-			id = getValorElementPorIdJQuery('tit_acrescimobaixa');
-			$(id).keypress(naoPermiteEntradaDeDados);
-			
-			id = getValorElementPorIdJQuery('tit_valorbaixa');
-			$(id).keypress(naoPermiteEntradaDeDados);
-			
-			permitirApenasNumero('responsavelCodigo');
-		</script>
+		
 
 		<div class="espacoBranco" />
 
@@ -446,7 +489,7 @@
 			header="Consulta responsável" appendToBody="false" dynamic="true">
 			<util:pesquisa managedBeanView="#{responsavelBeanView}"
 				nomePesquisa="Consulta responsável"
-				
+				colunasGridDataTableList="/resources/components/colunasDataTableEntidade.xhtml"
 				exibirBotaoAdd="true" ocultaNovo="true"
 				funcaoJavaScript="responsavelDialog.hide(), addResponsavelSelecionadoTitulo('#{objeto.json}')">
 			</util:pesquisa>

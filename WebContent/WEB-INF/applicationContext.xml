@@ -127,6 +127,8 @@
 	 <bean id="srvBairro" class="br.com.srv.implementacao.SrvBairroImpl"/>
 	 <bean id="srvFilial" class="br.com.srv.implementacao.SrvFilialImpl"/>
 	 <bean id="srvTitulo" class="br.com.srv.implementacao.SrvTituloImpl"/>
+	 <bean id="srvEntidadeEntidade" class="br.com.srv.implementacao.SrvEntidadeEntidadeImpl"/>
+	 
 	 
 	 
 	 <!-- DAOS -->
@@ -134,7 +136,9 @@
 	 <bean id="repositoryCidade" class="br.com.dao.implementacao.DaoCidade"/>
 	 <bean id="repositoryBairro" class="br.com.dao.implementacao.DaoBairro"/>
 	 <bean id="repositoryFilial" class="br.com.dao.implementacao.DaoFilial"/>
-	  <bean id="repositoryTitulo" class="br.com.dao.implementacao.DaoTitulo"/>
+	 <bean id="repositoryTitulo" class="br.com.dao.implementacao.DaoTitulo"/>
+	 <bean id="repositoryEntidadeEntidade" class="br.com.dao.implementacao.DaoEntidadeEntidade"/>  
+	  
 	 
 	 
 	 
@@ -146,6 +150,8 @@
 	 <bean id="filialController"  class="br.com.project.geral.controller.FilialController" />
 	 <bean id="mensagemController"  class="br.com.project.geral.controller.MensagemController" />
 	 <bean id="tituloController"  class="br.com.project.geral.controller.TituloController" />
+	 <bean id="entidadeEntidadeController"  class="br.com.project.geral.controller.EntidadeEntidadeController" />
+	 
 	 
 
 </beans>

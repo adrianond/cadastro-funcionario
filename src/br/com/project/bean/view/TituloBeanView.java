@@ -65,12 +65,11 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 
 	@RequestMapping("**/findResponsavel")
 	public void findResponsavel(HttpServletResponse httpServletResponse,
-			@RequestParam(value = "codResponsavel") Long codResponsavel)
-			throws Exception {
-			Entidade entidade = entidadeController.findByPorId(Entidade.class, codResponsavel);
+			@RequestParam(value = "codResponsavel") Long codResponsavel) throws Exception {
+			
+		Entidade entidade = entidadeController.findByPorId(Entidade.class, codResponsavel);
 			if (entidade != null) {
-				httpServletResponse.getWriter().write(
-						entidade.getJson().toString());
+				httpServletResponse.getWriter().write(entidade.getJson().toString());
 			}
 
 	}
@@ -80,7 +79,7 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 			throws Exception {
 
 		if (codResponsavel != null && codResponsavel > 0) {
-				objetoSelecionado.setEntCodigo(entidadeController.findByPorId(Entidade.class, codResponsavel));
+				//objetoSelecionado.setEntCodigo(entidadeController.findByPorId(Entidade.class, codResponsavel));
 		}
 	}
 

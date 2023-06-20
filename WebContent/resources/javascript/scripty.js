@@ -365,3 +365,17 @@ function copiarValorFantasiaRazao(campo) {
 		$(idCampoDestino).val(textParaCopia);
 	}
 }
+
+function addMascaraDecimalMonetaria(id) { 
+	var id = getValorElementPorId(id);
+	if (id != idundefined) {
+		jQuery(function($){
+			$("#"+id).maskMoney({precision:2, decimal:",", thousands:"."}); 
+		});	
+	}
+}
+
+
+function naoPermiteEntradaDeDados(e) {
+	return false;
+}

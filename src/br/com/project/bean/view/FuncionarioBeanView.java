@@ -135,8 +135,7 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
-			//objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_FUNCIONARIO);
-			objetoSelecionado.setEnt_tipo("Funcionario");
+			objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_FUNCIONARIO);
 			
 			if (null == objetoSelecionado.getEnt_datacadastro())
 				objetoSelecionado.setEnt_datacadastro(new Date());

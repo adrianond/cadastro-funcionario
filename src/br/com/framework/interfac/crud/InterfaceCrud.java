@@ -23,7 +23,7 @@ public interface InterfaceCrud<T> extends Serializable {
 	// salva ou atualiza
 	void saveOrUpdate(T obj) throws Exception;
 	
-	// realiza o update/atualização de dados
+	// realiza o update/atualizaï¿½ï¿½o de dados
 	void update(T obj) throws Exception;
 	
 	// realiza o delete de dados
@@ -48,10 +48,10 @@ public interface InterfaceCrud<T> extends Serializable {
 	void executeUpdateSQLDinamica(String s) throws Exception;
 	
 	
-	// limpa a sessão do Hibernate
+	// limpa a sessï¿½o do Hibernate
 	void clearSession() throws Exception;
 	
-	// Retira um objeto da sessão do hibernate
+	// Retira um objeto da sessï¿½o do hibernate
 	void evict (Object objs) throws Exception;
 	
 	Session getSession() throws Exception;
@@ -73,5 +73,6 @@ public interface InterfaceCrud<T> extends Serializable {
 	// Carregamento dinamico vom JSF e PrimeFaces
 	List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception;
 	
-	
+	T findUninqueByPropertyId(Class<T> entidade, Long id, Object atributo,
+			String condicaoAdicional) throws Exception;
 }

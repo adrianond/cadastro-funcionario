@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.enums.CondicaoPesquisa;
+import br.com.project.enums.TipoCadastro;
 import br.com.project.enums.TituloSituacao;
 import br.com.project.report.util.BeanReportView;
 import br.com.project.util.all.Messagens;
@@ -319,5 +320,48 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		}
 
 		return Boolean.valueOf(consultarInativos);
+	}
+	
+	public TipoCadastro getTipoEntidadeTemp() {
+
+		String tipoEntidade = null;
+
+		if (htmlInputHidden == null) {
+			return null;
+		}
+		if ((htmlInputHidden != null && htmlInputHidden.getAttributes() == null || htmlInputHidden
+				.getAttributes().isEmpty())) {
+			return null;
+		}
+
+		if (htmlInputHidden.getAttributes() != null
+				&& htmlInputHidden.getAttributes().isEmpty()) {
+			return null;
+		}
+
+		try {
+			tipoEntidade = (String) htmlInputHidden.getAttributes().get(
+					"tipoEntidadeTemp");
+		} catch (Exception e) {
+			// execeção omitida
+		}
+
+		if (tipoEntidade == null) {
+			return null;
+		}
+
+		if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_CLIENTE.name())) {
+			return TipoCadastro.TIPO_CADASTRO_CLIENTE;
+		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_CONSTRUTORA
+				.name())) {
+			return TipoCadastro.TIPO_CADASTRO_CONSTRUTORA;
+		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_FORNECEDOR
+				.name())) {
+			return TipoCadastro.TIPO_CADASTRO_FORNECEDOR;
+		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_FUNCIONARIO
+				.name())) {
+			return TipoCadastro.TIPO_CADASTRO_FUNCIONARIO;
+		} else
+			return TipoCadastro.TIPO_CADASTRO_VENDEDOR;
 	}
 }

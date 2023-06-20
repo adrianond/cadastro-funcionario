@@ -276,5 +276,49 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 		return obj;
 	}
+	
+	public T findUninqueByPropertyId(Class<T> entidade, Long id, Object atributo)throws Exception {
+		validaSessionFactory();
+		
+		StringBuilder query = new StringBuilder();
+
+		query.append("select entity from ").append(entidade.getSimpleName())
+				.append(" entity where entity.").append(atributo).append(" = ")
+				.append(id);
+
+		T obj = (T) this.findUniqueByQueryDinamica(query.toString());
+
+		return obj;
+	}
+
+	@Override
+	public T findUninqueByPropertyId(Class<T> entidade, Long id, Object atributo, String condicaoAdicional) throws Exception {
+		validaSessionFactory();
+		
+		StringBuilder query = new StringBuilder();
+
+		query.append("select entity from ").append(entidade.getSimpleName())
+				.append(" entity where entity.").append(atributo).append(" = ")
+				.append(id).append(" ").append(condicaoAdicional);
+
+		T obj = (T) this.findUniqueByQueryDinamica(query.toString());
+
+		return obj;
+	}
+	
+	public List<T> findListByProperty(Class<T> entidade, Object atributo, Object valor) throws Exception {
+		validaSessionFactory();
+		
+		StringBuilder query = new StringBuilder();
+		query.append(" select entity from ");
+		query.append(entidade.getSimpleName());
+		query.append(" entity where entity.");
+		query.append(atributo);
+		query.append(" = '");
+		query.append(valor);
+		query.append("' ");
+		List<T> lista = sessionFactory.getCurrentSession().createQuery(query.toString()).list();
+		return lista;
+	}
 
 }

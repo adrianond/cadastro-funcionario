@@ -29,6 +29,7 @@ import org.hibernate.envers.Audited;
 import org.primefaces.json.JSONObject;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
+import br.com.project.enums.TipoCadastro;
 import br.com.project.enums.TipoPessoa;
 
 @Audited
@@ -73,7 +74,7 @@ public class Entidade implements Serializable {
 	private String ent_emailcontato;
 	
 	@Enumerated(EnumType.STRING)
-	private String ent_tipo;
+	private TipoCadastro ent_tipo;
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Cidade", campoConsulta = "cidade.cid_descricao")
 	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
@@ -147,12 +148,12 @@ public class Entidade implements Serializable {
 		this.entidadesAcesso = entidadesAcesso;
 	}
 
-	public String getEnt_tipo() {
+	public TipoCadastro getEnt_tipo() {
 		return ent_tipo;
 	}
 
-	public void setEnt_tipo(String ent_tipo) {
-		this.ent_tipo = ent_tipo;
+	public void setEnt_tipo(TipoCadastro tipoCadastro) {
+		this.ent_tipo = tipoCadastro;
 	}
 
 	public String getEnt_fone() {

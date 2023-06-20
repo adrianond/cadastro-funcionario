@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.framework.implementacao.crud.ImplementacaoCrud;
 import br.com.framework.interfac.crud.InterfaceCrud;
+import br.com.project.enums.TipoCadastro;
 import br.com.project.model.classes.Entidade;
 import br.com.srv.interfaces.SrvEntidade;
 
@@ -35,6 +36,12 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 	
 	public boolean existeUsuario(String ent_login) {
 		return srvEntidade.existeUsuario(ent_login);
+	}
+	
+	public Entidade findFuncionario(Long codEntidade) throws Exception {
+		return findUninqueByPropertyId(Entidade.class, codEntidade,
+				"ent_codigo", " and entity.ent_inativo is false and entity.ent_tipo = '"
+						+ TipoCadastro.TIPO_CADASTRO_FUNCIONARIO.name() + "'");
 	}
 
 }
