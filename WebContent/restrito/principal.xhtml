@@ -7,8 +7,44 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
-		<ui:define name="corpo">
-		   copo das paginas web 
-		</ui:define>
+	<ui:define name="corpo">
+		<p:panel id="panelPageInicial" style="">
+			<script type="text/javascript">
+				
+			    //  google.load("visualization", "1", {packages:["corechart"]});
+				google.load("visualization", "1.1", {packages : [ "bar" ]});
+				google.setOnLoadCallback(drawChart);
+
+				function drawChart() {
+					//montando o array com os dados
+					$.ajax(
+						 {  type: "POST",
+					 	    url: "gerarGraficoInicial",
+							data: { dias: "7" }
+					 	}).always(function(resposta) {
+							resposta = JSON.parse(resposta);
+							var data = google.visualization.arrayToDataTable(resposta);
+
+							//opçoes para o gráfico barras
+							var options = {
+								chart : {
+									title : 'Média do valor dos títulos processados nos últimos 7 dias.',
+									//vAxis: {title: 'Valores expressados em médias.',  titleTextStyle: {color: 'red'}}//legenda vertical
+									subtitle : 'Valores expressados em médias.',
+							},
+							bars : 'vertical'
+						};
+
+					//instanciando e desenhando o gráfico barras
+					//var barras = new google.visualization.BarChart(document.getElementById('chart_inicial'));
+					var barras = new google.charts.Bar(document.getElementById('chart_inicial'));
+					barras.draw(data, options);
+				});
+			}
+			</script>
+
+			<div id="chart_inicial" style="width: 100%; height: 500px;"></div>
+		</p:panel>
+	</ui:define>
 </ui:composition>
 </html>

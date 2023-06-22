@@ -95,7 +95,7 @@ public class BairroBeanView extends BeanManagedViewAbstract {
 	}
 
 	/**
-	 * Ivocado pelo bot�o consultar
+	 * Ivocado pelo botao consultar
 	 */
 	@Override
 	public String redirecionarFindEntidade() throws Exception {

@@ -1,13 +1,17 @@
 package br.com.project.geral.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.faces.model.SelectItem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.framework.implementacao.crud.ImplementacaoCrud;
 import br.com.framework.interfac.crud.InterfaceCrud;
@@ -18,13 +22,43 @@ import br.com.repository.interfaces.RepositoryTitulo;
 import br.com.srv.interfaces.SrvTitulo;
 
 @Controller
-public class TituloController extends ImplementacaoCrud<Titulo> implements
-		InterfaceCrud<Titulo> {
+public class TituloController extends ImplementacaoCrud<Titulo> implements InterfaceCrud<Titulo> {
 	private static final long serialVersionUID = 1L;
-	@Resource
+	
+	@Autowired
 	private SrvTitulo srvTitulo;
-	@Resource
+	
+	@Autowired
 	private RepositoryTitulo repositoryTitulo;
+	
+	
+	
+	@RequestMapping("**/gerarGraficoInicial")
+	public @ResponseBody String gerarGraficoInicial(@RequestParam(value = "dias") int dias) {
+		
+		List<Map<String, Object>> titulosUltimosDias =  getTitulosUltimosDias(dias);
+		int quantidadeLinhas = titulosUltimosDias.size() + 1;
+		String[] dados = new String[quantidadeLinhas]; 
+		int contador = 0;
+		
+		if (dados.length == 0)
+			dados[contador++] = "[\"" + "Sem Dados" + "\"," + "\"" + 0 + "\"," + "\"" + 0 + "\"]";
+		else {
+			dados[contador] = "[\"" + "Tipo" + "\"," + "\"" + "Quantidade" + "\"," + "\"" + "Média" + "\"]";
+			contador++;
+			for (Map<String, Object> objeto : titulosUltimosDias) {
+				
+				dados[contador] = "[\"" + objeto.get("situacao") + "\"," 
+						+ "\"" + objeto.get("quantidade") + "\"," + "\"" 
+						+ objeto.get("media") + "\"]";
+				
+				contador++;
+			}
+		}
+		return Arrays.toString(dados);
+		
+	}
+	
 
 	public void setSrvTitulo(SrvTitulo srvTitulo) {
 		this.srvTitulo = srvTitulo;

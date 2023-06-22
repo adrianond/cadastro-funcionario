@@ -18,36 +18,36 @@ public class DaoTitulo extends ImplementacaoCrud<Titulo> implements
 	@Override
 	public List<Map<String, Object>> getMediaPorOrigem(int dias) {
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select count(1) as quantidade, tit_origem as situacao, trunc(avg(coalesce(tit_valor, 0.00)),2 ) as media_valor ");
+		sql.append(" select count(1) as quantidade, tituloorigem as situacao, trunc(avg(coalesce(titulovalor, 0.00)),2 ) as media_valor ");
 		sql.append(" from titulo ");
-		sql.append(" where  cast(tit_datahora as date) > (current_date -");
+		sql.append(" where  cast(titulodatahora as date) > (current_date -");
 		sql.append(dias);
-		sql.append(" ) and  cast(tit_datahora as date) <= current_date ");
-		sql.append(" group by tit_origem order by quantidade; ");
+		sql.append(" ) and  cast(titulodatahora as date) <= current_date ");
+		sql.append(" group by tituloorigem order by quantidade; ");
 		return super.getSimpleJdbcTemplate().queryForList(sql.toString());
 	}
 
 	@Override
 	public List<Map<String, Object>> getMediaPorTipoReceberPagar(int dias) {
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select count(1) as quantidade, tit_tipo as situacao, trunc(avg(coalesce(tit_valor, 0.00)),2 ) as media_valor ");
+		sql.append(" select count(1) as quantidade, titulotipo as situacao, trunc(avg(coalesce(titulovalor, 0.00)),2 ) as media ");
 		sql.append("  from titulo  ");
-		sql.append("  where  cast(tit_datahora as date) > (current_date - ");
+		sql.append("  where  cast(titulodatahora as date) > (current_date - ");
 		sql.append(dias);
-		sql.append(" ) and  cast(tit_datahora as date) <= current_date  ");
-		sql.append("  group by tit_tipo;  ");
+		sql.append(" ) and  cast(titulodatahora as date) <= current_date  ");
+		sql.append("  group by titulotipo;  ");
 		return super.getSimpleJdbcTemplate().queryForList(sql.toString());
 	}
 
 	@Override
 	public List<Map<String, Object>> getMediaPorTipoAbertoFechado(int dias) {
 		StringBuilder sql = new StringBuilder();
-		sql.append(" select count(1) as quantidade, case when tit_baixado then 'BAIXADO' else 'EM ABERTO' end as situacao, trunc(avg(coalesce(tit_valor, 0.00)),2 ) as media_valor ");
+		sql.append(" select count(1) as quantidade, case when titulobaixado then 'BAIXADO' else 'EM ABERTO' end as situacao, trunc(avg(coalesce(titulovalor, 0.00)),2 ) as media ");
 		sql.append("  from titulo ");
-		sql.append("  where  cast(tit_datahora as date) > (current_date - ");
+		sql.append("  where  cast(titulodatahora as date) > (current_date - ");
 		sql.append(dias);
-		sql.append(" ) and  cast(tit_datahora as date) <= current_date ");
-		sql.append(" group by tit_baixado; ");
+		sql.append(" ) and  cast(titulodatahora as date) <= current_date ");
+		sql.append(" group by titulobaixado; ");
 		return super.getSimpleJdbcTemplate().queryForList(sql.toString());
 	}
 
@@ -55,31 +55,31 @@ public class DaoTitulo extends ImplementacaoCrud<Titulo> implements
 	public List<Map<String, Object>> getTitulosUltimosDias(int dias) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("   (SELECT count(1) AS quantidade,                                      ");
-		sql.append("           tit_origem AS situacao,                                      ");
-		sql.append("           trunc(avg(coalesce(tit_valor, 0.00)),2) AS media_valor       ");
+		sql.append("           tituloorigem AS situacao,                                      ");
+		sql.append("           trunc(avg(coalesce(titulovalor, 0.00)),2) AS media       ");
 		sql.append("    FROM titulo                                                         ");
-		sql.append("    WHERE cast(tit_datahora AS date) > (CURRENT_DATE -  " + dias + ")   ");
-		sql.append("      AND cast(tit_datahora AS date) <= CURRENT_DATE                    ");
-		sql.append("    GROUP BY tit_origem                                                 ");
+		sql.append("    WHERE cast(titulodatahora AS date) > (CURRENT_DATE -  " + dias + ")   ");
+		sql.append("      AND cast(titulodatahora AS date) <= CURRENT_DATE                    ");
+		sql.append("    GROUP BY tituloorigem                                                 ");
 		sql.append("    UNION SELECT count(1) AS quantidade,                                ");
 		sql.append("                 CASE                                                   ");
-		sql.append("                     WHEN tit_baixado THEN 'BAIXADO'                    ");
+		sql.append("                     WHEN titulobaixado THEN 'BAIXADO'                    ");
 		sql.append("                     ELSE 'EM ABERTO'                                   ");
 		sql.append("                 END AS situacao,                                       ");
-		sql.append("                 trunc(avg(coalesce(tit_valor, 0.00)),2) AS media_valor ");
+		sql.append("                 trunc(avg(coalesce(titulovalor, 0.00)),2) AS media ");
 		sql.append("    FROM titulo                                                         ");
-		sql.append("    WHERE cast(tit_datahora AS date) > (CURRENT_DATE - " + dias + ")    ");
-		sql.append("      AND cast(tit_datahora AS date) <= CURRENT_DATE                    ");
-		sql.append("    GROUP BY tit_baixado                                                ");
+		sql.append("    WHERE cast(titulodatahora AS date) > (CURRENT_DATE - " + dias + ")    ");
+		sql.append("      AND cast(titulodatahora AS date) <= CURRENT_DATE                    ");
+		sql.append("    GROUP BY titulobaixado                                                ");
 		sql.append("    UNION SELECT count(1) AS quantidade,                                ");
-		sql.append("                 tit_tipo AS situacao,                                  ");
-		sql.append("                 trunc(avg(coalesce(tit_valor, 0.00)),2) AS media_valor ");
+		sql.append("                 titulotipo AS situacao,                                  ");
+		sql.append("                 trunc(avg(coalesce(titulovalor, 0.00)),2) AS media ");
 		sql.append("    FROM titulo                                                         ");
-		sql.append("    WHERE cast(tit_datahora AS date) > (CURRENT_DATE - " + dias + ")    ");
-		sql.append("      AND cast(tit_datahora AS date) <= CURRENT_DATE                    ");
-		sql.append("    GROUP BY tit_tipo)                                                  ");
+		sql.append("    WHERE cast(titulodatahora AS date) > (CURRENT_DATE - " + dias + ")    ");
+		sql.append("      AND cast(titulodatahora AS date) <= CURRENT_DATE                    ");
+		sql.append("    GROUP BY titulotipo)                                                  ");
 		sql.append(" ORDER BY quantidade,                                                   ");
-		sql.append("          media_valor                                                   ");
+		sql.append("          media                                                   ");
 
 		return super.getSimpleJdbcTemplate().queryForList(sql.toString());
 	}
