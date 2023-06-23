@@ -14,7 +14,7 @@
         <property name="hibernate.jdbc.batch_size">100</property> 
         <property name="hibernate.cache.use_second_cache">true</property>
         <property name="hibernate.transaction.auto_close_session">true</property>	
-        <property name="hibernate.hbm2ddl.auto">update</property>    
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property>   -->  
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.generate_statistics">false</property>
@@ -22,7 +22,7 @@
         <property name="hibernate.connection.autocommit">false</property>
         <property name="hibernate.connection.pool_size">50</property>
         
-        
+        <!-- Entidades -->
         <mapping class="br.com.project.model.classes.Entidade"/>
         <mapping class="br.com.project.model.classes.EntidadeAcesso"/>
         <mapping class="br.com.project.model.classes.Pais"/>
