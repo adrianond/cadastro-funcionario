@@ -157,6 +157,11 @@
 										action="#{tituloBeanView.redirecionarFindEntidade}"
 										immediate="true"/>
 								</sec:ifAnyGranted>
+								<sec:ifAnyGranted roles="ADMIN">
+									<p:menuitem value="Upload" id="upload"
+										onclick="redirecionarPage('#{request.contextPath}','/upload/', 'upload')"
+										ajax="true" />
+								</sec:ifAnyGranted>
 							</p:submenu>
 						</sec:ifAnyGranted>
 

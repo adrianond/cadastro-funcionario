@@ -1,4 +1,4 @@
-package br.com.dao.implementacao;
+package br.com.repository.interfaces.impl;
 
 import org.springframework.stereotype.Repository;
 
@@ -7,7 +7,7 @@ import br.com.project.model.classes.EntidadeEntidade;
 import br.com.repository.interfaces.RepositoryEntidadeEntidade;
 
 @Repository
-public class DaoEntidadeEntidade extends ImplementacaoCrud<EntidadeEntidade>
+public class RepositoryEntidadeEntidadeImpl extends ImplementacaoCrud<EntidadeEntidade>
 		implements RepositoryEntidadeEntidade {
 
 	private static final long serialVersionUID = 1L;

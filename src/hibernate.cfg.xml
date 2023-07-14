@@ -14,7 +14,7 @@
         <property name="hibernate.jdbc.batch_size">100</property> 
         <property name="hibernate.cache.use_second_cache">true</property>
         <property name="hibernate.transaction.auto_close_session">true</property>	
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property>   -->  
+        <property name="hibernate.hbm2ddl.auto">update</property>    
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.generate_statistics">false</property>
@@ -31,7 +31,9 @@
         <mapping class="br.com.project.model.classes.Mensagem"/>
         <mapping class="br.com.project.model.classes.Bairro"/>
         <mapping class="br.com.project.model.classes.Filial"/>
-         <mapping class="br.com.project.model.classes.Titulo"/>
+        <mapping class="br.com.project.model.classes.Titulo"/>
+        <mapping class="br.com.project.model.classes.ArquivoUpload"/>
+         
         
         
         <listener class="org.hibernate.envers.event.AuditEventListener"

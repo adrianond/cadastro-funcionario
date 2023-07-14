@@ -1,8 +1,5 @@
 package br.com.project.bean.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,7 +15,6 @@ import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
-import br.com.project.model.classes.Entidade;
 
 @Controller
 @Scope(value = "session")

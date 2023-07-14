@@ -85,7 +85,27 @@
 					</p:column>
 					<p:column>
 						<p:row>
-							<p:message for="ent_nomefantasia" />
+							<p:message for="ent_cpf" />
+						</p:row>
+					</p:column>
+					
+					<p:column>
+						<p:row>
+							<h:outputLabel for="ent_cpf" id="labelCpf"
+								value="CPF * : " />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputMask mask="999.999.999-99" id="ent_cpf"
+								value="#{funcionarioBeanView.objetoSelecionado.ent_cpf}"
+								required="true" requiredMessage="Informe o cpf."
+								maxlength="11"/>
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="ent_cpf" />
 						</p:row>
 					</p:column>
 

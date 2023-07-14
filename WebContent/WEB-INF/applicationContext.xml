@@ -120,23 +120,15 @@
 	 <bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/> 
 	 
 	 
-	 <!-- Services -->
-	 <bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl"/>
-	 <bean id="srvCidade" class="br.com.srv.implementacao.SrvCidadeImpl"/>
-	 <bean id="srvBairro" class="br.com.srv.implementacao.SrvBairroImpl"/>
-	 <bean id="srvFilial" class="br.com.srv.implementacao.SrvFilialImpl"/>
-	 <bean id="srvTitulo" class="br.com.srv.implementacao.SrvTituloImpl"/>
-	 <bean id="srvEntidadeEntidade" class="br.com.srv.implementacao.SrvEntidadeEntidadeImpl"/>
-	 
-	 
-	 
-	 <!-- DAOS -->
-	 <bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin"/>
-	 <bean id="repositoryCidade" class="br.com.dao.implementacao.DaoCidade"/>
-	 <bean id="repositoryBairro" class="br.com.dao.implementacao.DaoBairro"/>
-	 <bean id="repositoryFilial" class="br.com.dao.implementacao.DaoFilial"/>
-	 <bean id="repositoryTitulo" class="br.com.dao.implementacao.DaoTitulo"/>
-	 <bean id="repositoryEntidadeEntidade" class="br.com.dao.implementacao.DaoEntidadeEntidade"/>  
+	 <!-- DAO Reporitory -->
+	 <bean id="repositoryLogin" class="br.com.repository.interfaces.impl.RepositoryLoginImpl"/>
+	 <bean id="repositoryCidade" class="br.com.repository.interfaces.impl.RepositoryCidadeImpl"/>
+	 <bean id="repositoryBairro" class="br.com.repository.interfaces.impl.RepositoryBairroImpl"/>
+	 <bean id="repositoryFilial" class="br.com.repository.interfaces.impl.RepositoryFilialImpl"/>
+	 <bean id="repositoryTitulo" class="br.com.repository.interfaces.impl.RepositoryTituloImpl"/>
+	 <bean id="repositoryEntidade" class="br.com.repository.interfaces.impl.RepositoryEntidadeImpl"/>  
+	 <bean id="repositoryEntidadeEntidade" class="br.com.repository.interfaces.impl.RepositoryEntidadeEntidadeImpl"/>  
+	 <bean id="repositoryArquivoUpload" class="br.com.repository.interfaces.impl.RepositoryArquivoUploadImpl"/>  
 	  
 	 
 	 
@@ -149,7 +141,10 @@
 	 <bean id="filialController"  class="br.com.project.geral.controller.FilialController" />
 	 <bean id="mensagemController"  class="br.com.project.geral.controller.MensagemController" />
 	 <bean id="tituloController"  class="br.com.project.geral.controller.TituloController" />
+	 <bean id="entidadeController" class="br.com.project.geral.controller.EntidadeController" />
 	 <bean id="entidadeEntidadeController"  class="br.com.project.geral.controller.EntidadeEntidadeController" />
+	 <bean id="arquivoUploadControler"  class="br.com.project.geral.controller.ArquivoUploadControler" /> 
+	 
 	 
 	 
 

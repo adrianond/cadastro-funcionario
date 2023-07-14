@@ -7,15 +7,12 @@ import br.com.framework.implementacao.crud.ImplementacaoCrud;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.model.classes.EntidadeEntidade;
 import br.com.repository.interfaces.RepositoryEntidadeEntidade;
-import br.com.srv.interfaces.SrvEntidadeEntidade;
 
 @Controller
 public class EntidadeEntidadeController extends ImplementacaoCrud<EntidadeEntidade> implements InterfaceCrud<EntidadeEntidade> {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private SrvEntidadeEntidade srvEntidadeEntidade;
 	
 	@Autowired
 	private RepositoryEntidadeEntidade repositoryEntidadeEntidade;
@@ -23,10 +20,7 @@ public class EntidadeEntidadeController extends ImplementacaoCrud<EntidadeEntida
 	public EntidadeEntidadeController() {
 	}
 
-	public void setSrvEntidadeEntidade(SrvEntidadeEntidade srvEntidadeEntidade) {
-		this.srvEntidadeEntidade = srvEntidadeEntidade;
-	}
-
+	
 	public void setRepositoryEntidadeEntidade(RepositoryEntidadeEntidade repositoryEntidadeEntidade) {
 		this.repositoryEntidadeEntidade = repositoryEntidadeEntidade;
 	}

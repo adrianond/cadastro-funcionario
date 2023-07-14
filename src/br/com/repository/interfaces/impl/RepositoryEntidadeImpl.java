@@ -1,4 +1,4 @@
-package br.com.dao.implementacao;
+package br.com.repository.interfaces.impl;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ import br.com.project.model.classes.Entidade;
 import br.com.repository.interfaces.RepositoryEntidade;
 
 @Repository
-public class DaoEntidade extends ImplementacaoCrud<Entidade> implements
+public class RepositoryEntidadeImpl extends ImplementacaoCrud<Entidade> implements
 		RepositoryEntidade {
 
 	private static final long serialVersionUID = 1L;

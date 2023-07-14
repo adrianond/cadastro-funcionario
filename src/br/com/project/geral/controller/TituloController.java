@@ -19,14 +19,11 @@ import br.com.project.enums.TipoTitulo;
 import br.com.project.enums.TituloOrigem;
 import br.com.project.model.classes.Titulo;
 import br.com.repository.interfaces.RepositoryTitulo;
-import br.com.srv.interfaces.SrvTitulo;
 
 @Controller
 public class TituloController extends ImplementacaoCrud<Titulo> implements InterfaceCrud<Titulo> {
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private SrvTitulo srvTitulo;
 	
 	@Autowired
 	private RepositoryTitulo repositoryTitulo;
@@ -58,11 +55,7 @@ public class TituloController extends ImplementacaoCrud<Titulo> implements Inter
 		return Arrays.toString(dados);
 		
 	}
-	
 
-	public void setSrvTitulo(SrvTitulo srvTitulo) {
-		this.srvTitulo = srvTitulo;
-	}
 
 	public void setRepositoryTitulo(RepositoryTitulo repositoryTitulo) {
 		this.repositoryTitulo = repositoryTitulo;

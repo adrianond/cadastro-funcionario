@@ -8,6 +8,7 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.context.RequestContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.SessionController;
-import br.com.srv.interfaces.SrvLogin;
+import br.com.repository.interfaces.RepositoryLogin;
 
 @Controller
 @Scope(value = "request")
@@ -32,8 +33,8 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	private SessionController sessionController;
 	
 	
-	@Resource
-	private SrvLogin srvLogin;
+	@Autowired
+	private RepositoryLogin repositoryLogin;
 	
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
 	public void invalidarSessionMetodo(HttpServletRequest httpServletRequest) throws Exception {
@@ -59,7 +60,7 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 		FacesMessage message = null;
 		boolean loggedIn = false;
 		
-		if (srvLogin.autentico(getUsername(), getPassword())){
+		if (repositoryLogin.autentico(getUsername(), getPassword())){
 			sessionController.invalidateSession(getUsername());
 			loggedIn = true;
 		}else {

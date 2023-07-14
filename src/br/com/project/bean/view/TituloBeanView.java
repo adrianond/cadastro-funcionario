@@ -39,7 +39,7 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	private String urlFind = "/cadastro/financeiro/find_titulo.jsf?faces-redirect=true";
 	private String urlBaixar = "/cadastro/financeiro/baixar_titulo.jsf?faces-redirect=true";
 
-	@Resource
+	@Autowired
 	private TituloController tituloController;
 
 	@Autowired

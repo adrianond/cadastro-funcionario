@@ -1,4 +1,4 @@
-package br.com.dao.implementacao;
+package br.com.repository.interfaces.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,7 @@ import br.com.project.model.classes.Titulo;
 import br.com.repository.interfaces.RepositoryTitulo;
 
 @Repository
-public class DaoTitulo extends ImplementacaoCrud<Titulo> implements
+public class RepositoryTituloImpl extends ImplementacaoCrud<Titulo> implements
 		RepositoryTitulo {
 
 	private static final long serialVersionUID = 1L;

@@ -12,6 +12,7 @@ import org.primefaces.model.DualListModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -146,6 +147,14 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 					addMsg("Já existe usuário com o mesmo login.");
 					return;
 				}
+				
+				if (!CollectionUtils.isEmpty(entidadeController
+						.cpfCadastrado(objetoSelecionado.getEnt_cpf()))){
+					
+					addMsg("CPF já cadastrado para outro usuário.");
+					return;
+				}
+				
 				gravaFuncionario();
 			}
 	}

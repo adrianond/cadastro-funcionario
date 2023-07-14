@@ -48,6 +48,8 @@ public class Entidade implements Serializable {
 	private String ent_login = null;
 
 	private String ent_senha;
+
+	private String ent_cpf;
 	
 	@Column(nullable = true)
 	private Boolean ent_mudarsenha;
@@ -348,6 +350,15 @@ public class Entidade implements Serializable {
 	public void setEnt_observacao(String ent_observacao) {
 		this.ent_observacao = ent_observacao;
 	}
+	
+	public String getEnt_cpf() {
+		return ent_cpf;
+	}
+
+	public void setEnt_cpf(String ent_cpf) {
+		this.ent_cpf = ent_cpf;
+	}
+	
 
 	public JSONObject getJson() {
 		Map<Object, Object> map = new HashMap<Object, Object>();
